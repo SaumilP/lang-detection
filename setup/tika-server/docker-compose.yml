@@ -1,0 +1,20 @@
+version: "3.3"
+services:
+  tika-server:
+    image: lexpredict/tika-server:latest
+    ports:
+      - 9998:9998
+    configs:
+      - source: tika_config
+        target: /tika-config.xml
+    networks:
+      - net
+    deploy:
+      replicas: 3
+
+networks:
+  net:
+
+configs:
+  tika_config:
+    file: ./tika-config.xml
